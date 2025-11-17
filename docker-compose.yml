@@ -1,0 +1,23 @@
+version: "3.9"
+
+services:
+  clients-service:
+    build: ./clients-service
+    container_name: clients-service
+    ports:
+      - "5001:5001"
+
+  products-service:
+    build: ./products-service
+    container_name: products-service
+    ports:
+      - "5002:5002"
+
+  sales-service:
+    build: ./sales-service
+    container_name: sales-service
+    ports:
+      - "5003:5003"
+    depends_on:
+      - clients-service
+      - products-service
